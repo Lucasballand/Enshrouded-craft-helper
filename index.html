@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Enshrouded Craft Calc</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <h1>Enshrouded Craft Calc</h1>
+        <p>Choisis un objet → calcule les ressources (avec crafts intermédiaires) → plan clair.</p>
+      </div>
+
+      <nav class="tabs">
+        <button class="tab is-active" data-tab="tab-craft">Craft</button>
+        <button class="tab" data-tab="tab-inv">Inventaire</button>
+        <button class="tab" data-tab="tab-recipes">Recettes</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <!-- CRAFT -->
+    <section id="tab-craft" class="panel is-active">
+      <div class="layout">
+        <aside class="card sidebar">
+          <h2>CALCUL</h2>
+
+          <label class="lbl" for="q">Rechercher</label>
+          <input id="q" class="input" type="search" placeholder="Ex: flèche, planches, ectoplasme…" />
+
+          <label class="lbl" for="selItem">Objet à craft</label>
+          <select id="selItem" class="input"></select>
+
+          <div class="row2">
+            <div>
+              <label class="lbl" for="qty">Quantité</label>
+              <input id="qty" class="input" type="number" min="1" value="1" />
+            </div>
+            <div>
+              <label class="lbl" for="qtyMode">Mode</label>
+              <select id="qtyMode" class="input">
+                <option value="items">Je veux X objets</option>
+                <option value="crafts">Je veux X crafts</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row2">
+            <div style="flex:1">
+              <label class="lbl" for="selRecipe">Recette</label>
+              <select id="selRecipe" class="input"></select>
+            </div>
+            <div style="display:flex;align-items:flex-end;gap:10px">
+              <button id="btnCompute" class="btn primary">Calculer</button>
+              <button id="btnReset" class="btn">Reset</button>
+            </div>
+          </div>
+
+          <details class="opt">
+            <summary>Options</summary>
+            <label class="check">
+              <input id="useInv" type="checkbox" checked />
+              Déduire mon inventaire (sur tout : bruts + composants)
+            </label>
+            <div class="muted" style="margin-top:8px">
+              Astuce : pour les munitions (flèches…), le jeu craft souvent par gros paquet.
+              Le mode “X crafts” est souvent plus naturel.
+            </div>
+          </details>
+
+          <div id="miniInfo" class="mini"></div>
+
+          <div class="muted" style="margin-top:10px">
+            Données attendues : <code>window.ENSHROUDED</code> (voir <code>data.js</code>).
+          </div>
+        </aside>
+
+        <section class="card main">
+          <div class="main-head">
+            <h2>PLAN (LISIBLE)</h2>
+            <div class="subtabs">
+              <button class="subtab is-active" data-sub="do">Je fais quoi ?</button>
+              <button class="subtab" data-sub="lists">Listes</button>
+              <button class="subtab" data-sub="tree">Arbre</button>
+            </div>
+          </div>
+
+          <div id="planTop" class="plan-top"></div>
+
+          <div id="view-do" class="view is-active"></div>
+          <div id="view-lists" class="view"></div>
+          <div id="view-tree" class="view"></div>
+        </section>
+      </div>
+    </section>
+
+    <!-- INVENTORY -->
+    <section id="tab-inv" class="panel">
+      <div class="card">
+        <div class="inv-head">
+          <div>
+            <h2>Inventaire</h2>
+            <div class="muted">Renseigne ce que tu as. Le plan peut le déduire automatiquement.</div>
+          </div>
+          <input id="qInv" class="input" type="search" placeholder="Filtrer l’inventaire…" style="max-width:360px" />
+        </div>
+        <div id="invGrid" class="grid"></div>
+        <div class="row2" style="margin-top:12px;align-items:center">
+          <button id="btnInvClear" class="btn">Vider</button>
+          <div class="muted">Sauvegardé automatiquement dans le navigateur.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECIPES -->
+    <section id="tab-recipes" class="panel">
+      <div class="card">
+        <div class="recipes-head">
+          <h2>Recettes</h2>
+          <input id="qRecipes" class="input" type="search" placeholder="Rechercher une recette…"
+            style="max-width:360px" />
+        </div>
+        <div id="recipesGrid" class="grid"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+{
+  "pageId": 350,
+  "output": {
+    "itemId": 1782,
+    "name": "Flèche paralysante",
+    "qty": 25
+  },
+  "ingredients": [
+    {
+      "itemId": 205,
+      "name": "Brindilles",
+      "qty": 5
+    },
+    {
+      "itemId": 84,
+      "name": "Pâte visqueuse",
+      "qty": 2
+    },
+    {
+      "itemId": 683,
+      "name": "Base alchimique",
+      "qty": 1
+    },
+    {
+      "itemId": 86,
+      "name": "Poussière d'insectes",
+      "qty": 10
+    }
+  ],
+  "requirements": {
+    "npcs": [
+      {
+        "id": 117,
+        "name": "Athalan Skree la Chasseresse"
+      }
+    ],
+    "stations": []
+  },
+  "recipeObj": {
+    "outputItem": 4263,
+    "outputQuantity": 407,
+    "outputDuration": 24,
+    "requirements": 4269,
+    "ingredients": 4274
+  },
+  "hint": "Vérifie output.qty + ingredients[].qty : ils doivent être petits (1..50)."
+}
